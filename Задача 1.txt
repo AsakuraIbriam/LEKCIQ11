@@ -1,0 +1,37 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+#define MX(x,y) (x > y) ? (x) : (y)
+#define MN(x,y) (x > y) ? (y) : (x)
+
+
+//MIN
+#define MIN(x,y,z) (MN(x,y) > (z)) ? (z) : (MN(x,y))
+//MAX
+#define MAX(x,y,z) ((MX(x,y)) > (z)) ? (MX(x,y)) : (z)
+
+//SETBIT
+#define SETBIT(mask,bit) (mask|(1<<bit))
+
+//CLEARBIT
+#define CLEARBIT(mask,bit) (mask&(~(1<<bit)))
+
+//INVERSEBIT
+#define INVERT(mask,bit) (mask ^ (1<<bit))
+
+//CHECKBIT
+#define CHECKBIT(mask,bit) (mask&(1<<bit)) > 0 ? 1 : 0
+
+//SWAP
+#define SWAP(a,b) a=(a^b); b =(b^a); a=(a^b);
+int main(){
+
+    int a = 15;
+    int b = 30;
+    SWAP(a,b);
+    printf("%d %d", a,b);
+
+    return 0;
+}

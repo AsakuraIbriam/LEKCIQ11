@@ -1,0 +1,64 @@
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+
+
+
+double generateRandom(int min, int max) {
+    return max + (float)(rand())/((float)(RAND_MAX/(max-min)));
+}
+
+void initialize(double *arr, int n, int min, int max) {
+    for(int i = 0; i < n; i++) {
+        arr[i] = generateRandom(min, max);
+        printf("%lf ", arr[i]);
+    }
+
+}
+int main(){
+
+    srand(time(NULL));
+
+   int n = 0;
+   printf("Enter n: ");
+   scanf("%d", &n);
+
+   double *arr = NULL;
+   if(!(arr = (double*)malloc(sizeof(double)*n))){
+         fprintf(stderr, "Malloc failed");
+        exit(1);
+   }
+   initialize(arr, n, 0,1);
+
+    printf("\n");
+
+   int m = 0;
+   printf("Enter m: ");
+   scanf("%d", &m);
+   if(!(arr = (double*)realloc(arr, sizeof(double)*m))){
+        fprintf(stderr, "Realloc failed");
+        exit(1);
+   }
+   initialize(arr, m, 1,2);
+
+   printf("\n");
+
+    int p = 0;
+    printf("Enter p: ");
+    scanf("%d", &p);
+    if(!(arr = (double*)realloc(arr, sizeof(double)*p))) {
+        fprintf(stderr, "Realloc failed");
+        exit(1);
+    }
+    initialize(arr, p, 2,3);
+
+    free(arr);
+
+
+
+
+    return 0;
+}
